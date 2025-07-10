@@ -1,0 +1,21 @@
+<Файл ИдФайл="ON_SLUZHZAP_20250630_d7b081fd-1374-4fee-88fa-fc4e8dea4179" Формат="СлужебнаяЗапискаЗагрузка" ВерсияФормата="1">
+    <Документ Дата="01.07.2025" Номер="ЕУ-122577" Срок="01.07.2025">
+    <Описание>
+Кол-во задач с состоянием 'Выполнение завершено успешно': 11
+__________________________________________________________________________
+Кол-во задач с состоянием 'В обработке': 8
+Список задач:
+ https://online.sbis.ru/opendoc.html?guid=adf16930-9591-48e0-8aa4-12590b5b78c1&amp;client=6926697  
+  https://online.sbis.ru/opendoc.html?guid=c0801af2-8a6f-4260-99c2-5297a3b7c260&amp;client=6926697  
+  https://online.sbis.ru/opendoc.html?guid=c5f6a3c7-225d-4b7b-bf7e-0daaa4354fe1&amp;client=6926697  
+  https://online.sbis.ru/opendoc.html?guid=99d750dc-855a-43fb-a99b-a76b77c5be61&amp;client=6926697  
+  https://online.sbis.ru/opendoc.html?guid=b63642a0-1072-43ad-85d5-2cf8085e70de&amp;client=6926697  
+  https://online.sbis.ru/opendoc.html?guid=a28e14aa-e0ab-476f-af68-deccd1601f3c&amp;client=6926697  
+  https://online.sbis.ru/opendoc.html?guid=1ff0efa6-d6b1-4e7e-a67a-eae769025982&amp;client=6926697  
+  https://online.sbis.ru/opendoc.html?guid=d2cb2bb2-17c6-44d6-88ab-2ca0210f558b&amp;client=6926697 
+</Описание>
+    <Исполнители>
+        <ДанныеИсполнителя Имя="Евгений" ВнешнийИдентификатор="c943a420-f494-4a38-8975-d9db61c3dba7" Отчество="Витальевич" Фамилия="Гринев"/>
+    </Исполнители>
+    </Документ>
+</Файл>
