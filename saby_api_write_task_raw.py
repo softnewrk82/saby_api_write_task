@@ -10,8 +10,6 @@ import numpy as np
 
 import pendulum
 
-date_now = datetime.datetime.now().date()
-
 # from airflow.operators.bash import BashOperator
 from airflow.operators.python import PythonOperator
 from airflow.operators.generic_transfer import GenericTransfer
@@ -85,7 +83,7 @@ default_arguments = {
 
 
 with DAG(
-    'SBIS_buh_set_and_update_dept_task',
+    'saby_buh_set_and_update_dept_task',
     schedule_interval='0 9 * * *',
     # schedule_interval='@once',
     catchup=False,
@@ -96,12 +94,12 @@ with DAG(
     def py_upl_script():
 
 
-        try:
+        # try:
             def get_random_cyrillic_letter():
-            """Возвращает случайную букву кириллицы."""
-            # cyrillic_alphabet = "абвгдеёжзийклмнопрстуфхцчшщъыьэюя"
-            cyrillic_alphabet = "абвгдежзийклмнопрстуфхцчшэюя"
-            return random.choice(cyrillic_alphabet)
+                """Возвращает случайную букву кириллицы."""
+                # cyrillic_alphabet = "абвгдеёжзийклмнопрстуфхцчшщъыьэюя"
+                cyrillic_alphabet = "абвгдежзийклмнопрстуфхцчшэюя"
+                return random.choice(cyrillic_alphabet)
 
             random_letter = get_random_cyrillic_letter()
             # print(random_letter.upper())
@@ -233,7 +231,7 @@ with DAG(
                 
                 # ___________________________________________________
                 
-                with open("./test_xml_saby_task.xml", "rb") as file:
+                with open("/home/da/airflow/dags/test_xml_saby_task.xml", "rb") as file:
                     encoded = base64.encodebytes(file.read()).decode("utf-8")
                 
                 decoded = base64.decodebytes(encoded.encode('utf-8'))
@@ -251,10 +249,10 @@ with DAG(
                 
                 str_encode = str_decoded.encode('utf-8')
                 
-                with open(f"./temp/{str_myuuid_attached} {var_last_name} {var_first_name} {var_surname}.xml", "wb") as file:
+                with open(f"/home/da/airflow/dags/temp/{str_myuuid_attached} {var_last_name} {var_first_name} {var_surname}.xml", "wb") as file:
                     file.write(str_encode)
                 
-                with open(f"./temp/{str_myuuid_attached} {var_last_name} {var_first_name} {var_surname}.xml", "rb") as file:
+                with open(f"/home/da/airflow/dags/temp/{str_myuuid_attached} {var_last_name} {var_first_name} {var_surname}.xml", "rb") as file:
                     encoded_attached = base64.encodebytes(file.read()).decode("utf-8")
 
                 return str_myuuid, str_myuuid_attached, num_task, date_from, var_sluzhzap, date_to, var_describe, encoded_attached
@@ -341,7 +339,8 @@ with DAG(
                     # 3. Execute the statement
                     with engine.connect() as conn:
                         result = conn.execute(stmt)
-                        conn.commit()
+                        # windows
+                        # conn.commit()
                         print(f"inserted {result}")
 
                 else: 
@@ -393,7 +392,8 @@ with DAG(
                     # 3. Execute the statement
                     with engine.connect() as conn:
                         result = conn.execute(stmt)
-                        conn.commit()
+                        # windows
+                        # conn.commit()
                         print(f"updated {result}")
                         print('_________________')
 
@@ -405,7 +405,7 @@ with DAG(
             else: 
                 var_month = var_date_report.month
 
-            df_debt = pd.read_excel(f'./Выгрузки/Долг сотрудник {var_date_report_clear.year}-{var_month}.xlsx', header=7)
+            df_debt = pd.read_excel(f'/mnt/da_server/buh_dept/Долг сотрудник {var_date_report_clear.year}-{var_month}.xlsx', header=7)
             df_debt_red = df_debt[[
                 "Unnamed: 3",
                 "Незавершенные операции на конец периода"
@@ -652,7 +652,7 @@ with DAG(
                 
                 # ___________________________________________________
                 
-                with open("./test_xml_saby_task_main.xml", "rb") as file:
+                with open("/home/da/airflow/dags/test_xml_saby_task_main.xml", "rb") as file:
                     encoded = base64.encodebytes(file.read()).decode("utf-8")
                 
                 decoded = base64.decodebytes(encoded.encode('utf-8'))
@@ -671,10 +671,10 @@ with DAG(
                 
                 str_encode = str_decoded.encode('utf-8')
                 
-                with open(f"./temp/{str_myuuid_attached} {var_last_name} {var_first_name} {var_surname}.xml", "wb") as file:
+                with open(f"/home/da/airflow/dags/temp/{str_myuuid_attached} {var_last_name} {var_first_name} {var_surname}.xml", "wb") as file:
                     file.write(str_encode)
                 
-                with open(f"./temp/{str_myuuid_attached} {var_last_name} {var_first_name} {var_surname}.xml", "rb") as file:
+                with open(f"/home/da/airflow/dags/temp/{str_myuuid_attached} {var_last_name} {var_first_name} {var_surname}.xml", "rb") as file:
                     encoded_attached = base64.encodebytes(file.read()).decode("utf-8")
 
                 return str_myuuid, str_myuuid_attached, num_task, date_from, var_sluzhzap, date_to, var_describe, encoded_attached
@@ -762,7 +762,8 @@ with DAG(
                     # 3. Execute the statement
                     with engine.connect() as conn:
                         result = conn.execute(stmt)
-                        conn.commit()
+                        # windows
+                        # conn.commit()
                         print(f"inserted {result}")
                 
                 else:
@@ -796,7 +797,8 @@ with DAG(
                         # 3. Execute the statement
                         with engine.connect() as conn:
                             result = conn.execute(stmt)
-                            conn.commit()
+                            # windows
+                            # conn.commit()
                             print(f"inserted {result}")
                 
                     else: 
@@ -852,7 +854,8 @@ with DAG(
                         # 3. Execute the statement
                         with engine.connect() as conn:
                             result = conn.execute(stmt)
-                            conn.commit()
+                            # windows
+                            # conn.commit()
                             print(f"updated {result}")
                             print('_________________')
 
@@ -1006,8 +1009,8 @@ with DAG(
                 write_check_task(var_status_main_cycle, var_external_id, date_from, num_task, str_myuuid, date_to, var_r_u_last_name, var_m_u_last_name, var_r_u_first_name, var_m_u_first_name, var_r_u_surname, var_m_u_surname, str_myuuid_attached, var_sluzhzap, encoded_attached, headers)
                 # headers = str(auth(url_sbis, API_sbis, API_sbis_pass)).replace("'", '"')
                 execute_main_task(var_status_main_cycle, str_myuuid, headers, num_task) 
-        except: 
-            print('error')  
+        # except: 
+            # print('error')  
 
             
     python_upl_script = PythonOperator(
